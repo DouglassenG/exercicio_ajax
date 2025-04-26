@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const followingElement = document.querySelector('#following');
     const linkElement = document.querySelector('#link');
 
-    fetch('https://api.github.com/users/DouglassenG') // troquei para https
+    fetch('https://api.github.com/users/DouglassenG')
     .then(function(res) {
         return res.json();
     })
@@ -19,5 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         followersElement.innerText = json.followers;
         reposElement.innerText = json.public_repos;
         linkElement.href = json.html_url;
-    });
-});
+    })
+    .catch(function(erro) {
+        alert("Ocorreu um erro ao buscar o endereço, tente novamente mais tarde.");
+    })
+})
